@@ -16,7 +16,7 @@ import java.util.Optional;
 @FeignClient(name = "orders", url = "http://orders:8080")
 public interface OrderController {
     @GetMapping("/orders")
-    ResponseEntity<List<OrderOut>> findAll(@PathVariable Optional<String> name);
+    ResponseEntity<List<OrderOut>> findAll();
 
     @GetMapping("/orders/{idOrder}")
     ResponseEntity<OrderOut> findById(
