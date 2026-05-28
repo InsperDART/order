@@ -1,5 +1,6 @@
 package store.order;
 
+import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -20,7 +21,7 @@ public interface OrderController {
     @GetMapping("/orders/{idOrder}")
     ResponseEntity<OrderOut> findById(
         @PathVariable @NotEmpty @NotNull String idOrder,
-        @RequestParam Optional<String> currency,
+        @RequestParam @Nullable String currency,
         @RequestHeader(value = "id-account") String idAccount
     );
     @PostMapping("/orders")
