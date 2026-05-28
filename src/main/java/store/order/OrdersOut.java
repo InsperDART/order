@@ -1,15 +1,11 @@
 package store.order;
 
-import jakarta.annotation.Nullable;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
-public record OrderOut(
+public record OrdersOut(
         String id,
         LocalDateTime date,
-        @Nullable String currency,
-        List<ItemOut> items,
         Double total
 ) {
 }
