@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @FeignClient(name = "orders", url = "http://orders:8080")
 public interface OrderController {
     @GetMapping("/orders")
-    ResponseEntity<List<OrderOut>> findAll();
+    ResponseEntity<List<OrderOut>> findAll(@PathVariable Optional<String> name);
 
     @GetMapping("/orders/{idOrder}")
     ResponseEntity<OrderOut> findById(
