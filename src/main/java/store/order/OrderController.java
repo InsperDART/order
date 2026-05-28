@@ -21,9 +21,13 @@ public interface OrderController {
     ResponseEntity<OrderOut> findById(
             @PathVariable @NotEmpty @NotNull String idOrder
     );
-
     @PostMapping("/orders")
     ResponseEntity<OrderOut> create(
+            @RequestBody @Valid OrderIn in
+    );
+
+    @PostMapping("/orders/health-check")
+    ResponseEntity<Void> healthCheck(
             @RequestBody @Valid OrderIn in
     );
 }
