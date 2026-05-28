@@ -20,17 +20,15 @@ public interface OrderController {
     @GetMapping("/orders/{idOrder}")
     ResponseEntity<OrderOut> findById(
         @PathVariable @NotEmpty @NotNull String idOrder,
+        @RequestParam Optional<String> currency,
         @RequestHeader(value = "id-account") String idAccount
     );
     @PostMapping("/orders")
     ResponseEntity<OrderOut> create(
-        @RequestBody @Valid OrderIn in,
+        @RequestBody @Valid @NotNull OrderIn in,
         @RequestHeader(value = "id-account") String idAccount
     );
 
     @PostMapping("/orders/health-check")
-    ResponseEntity<Void> healthCheck(
-        @RequestBody @Valid OrderIn in,
-        @RequestHeader(value = "id-account") String idAccount
-    );
+    ResponseEntity<Void> healthCheck();
 }
