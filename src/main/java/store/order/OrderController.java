@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@FeignClient(name = "orders", url = "http://orders:8080")
+@FeignClient(name = "orders", url = "http://order:8080")
 public interface OrderController {
     @GetMapping("/orders")
     ResponseEntity<List<OrdersOut>> findAll(
@@ -30,6 +30,6 @@ public interface OrderController {
         @RequestHeader(value = "id-account") String idAccount
     );
 
-    @PostMapping("/orders/health-check")
+    @GetMapping("/orders/health-check")
     ResponseEntity<Void> healthCheck();
 }
